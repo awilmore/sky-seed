@@ -1,0 +1,8 @@
+.idea/
+client/styles/css
+client/transpiled
+coverage/
+dist/
+node_modules/
+.sass-cache/
+*.log

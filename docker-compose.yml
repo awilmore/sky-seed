@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  skyseed:
+    build: .
+    image: repo.skyops.io/skyseed

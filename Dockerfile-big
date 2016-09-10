@@ -1,0 +1,21 @@
+FROM repo.skyops.io/nodeapp:0.1.1
+MAINTAINER Adam Wilmore "adam.wilmore@iag.com.au"
+
+# Prepare build env
+RUN apt-get update && apt-get install -y \
+  build-essential
+
+RUN npm install -g node-gyp
+
+# Prepare image
+COPY artefacts/ /
+
+# Run build
+RUN set -x && \
+  echo '' > /root/.npmrc && \
+  cd /src && \
+  npm install --no-color
+
+# Gen docker build.txt
+RUN /root/build-info/gen-build-txt.sh
+

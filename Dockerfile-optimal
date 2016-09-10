@@ -1,0 +1,24 @@
+FROM repo.skyops.io/nodeapp:0.1.1
+MAINTAINER Adam Wilmore "adam.wilmore@iag.com.au"
+
+# Prepare image
+COPY artefacts/ /
+
+# Build everything
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y build-essential && \
+    npm install -g gulp node-gyp && \
+    echo '' > /root/.npmrc && \
+    cd /src && \
+    npm install && \
+    gulp build && \
+    mv /src/dist/* /usr/src/app/ && \
+    mv /src/node_modules /usr/src/app/ && \
+    apt-get remove -y build-essential && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    cd /root && \
+    rm -rf /src && \
+    /root/build-info/gen-build-txt.sh
+
