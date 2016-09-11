@@ -91,7 +91,10 @@ git push origin $BRANCH_NAME
 
 # Finished
 echo " "
-echo " ************************** "
-echo " ***  RELEASE COMPLETE  *** "
-echo " ************************** "
+echo " ***************************************** "
+echo " ***          RELEASE COMPLETE         *** "
+echo " ***                                   *** "
+echo " ***  - IMAGE: $IMAGE:$VERSION "
+echo " ***                                   *** "
+echo " ***************************************** "
 echo " "
